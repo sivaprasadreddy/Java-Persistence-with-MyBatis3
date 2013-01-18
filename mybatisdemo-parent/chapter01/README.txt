@@ -1,0 +1,1 @@
+This module demonstrate the basic usage of MyBatis persistence framework.
