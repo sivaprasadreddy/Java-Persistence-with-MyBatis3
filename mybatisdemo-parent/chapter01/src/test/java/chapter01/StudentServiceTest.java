@@ -9,8 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import chapter01.Student;
-import chapter01.StudentService;
+import chapter01.domain.Student;
 
 
 public class StudentServiceTest 

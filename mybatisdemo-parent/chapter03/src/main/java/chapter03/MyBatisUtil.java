@@ -1,4 +1,4 @@
-package chapter03.xml;
+package chapter03;
 
 import java.io.IOException;
 import java.io.InputStream;

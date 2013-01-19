@@ -9,10 +9,10 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import chapter03.StudentService;
 import chapter03.domain.PhoneNumber;
 import chapter03.domain.Student;
 import chapter03.domain.Tutor;
-import chapter03.xml.StudentService;
 
 
 

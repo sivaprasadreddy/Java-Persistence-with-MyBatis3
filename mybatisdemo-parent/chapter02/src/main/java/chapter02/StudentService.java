@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import chapter02.domain.Student;
+
 public class StudentService 
 {
 	private Logger logger = LoggerFactory.getLogger(getClass());

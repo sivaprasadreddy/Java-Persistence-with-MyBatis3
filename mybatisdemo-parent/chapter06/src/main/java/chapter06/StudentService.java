@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import chapter06.domain.Student;
+
 
 public class StudentService 
 {
@@ -23,13 +25,13 @@ public class StudentService
 		}
 	}
 	
-	public Student findStudentById(Integer blogId)
+	public Student findStudentById(Integer studId)
 	{
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
-			StudentMapper blogMapper = sqlSession.getMapper(StudentMapper.class);
-			logger.debug("StudentMapper-DEBUG :"+blogMapper);
-			return blogMapper.findStudentById(blogId);
+			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+			logger.debug("StudentMapper-DEBUG :"+studentMapper);
+			return studentMapper.findStudentById(studId);
 		} finally {
 			sqlSession.close();
 		}

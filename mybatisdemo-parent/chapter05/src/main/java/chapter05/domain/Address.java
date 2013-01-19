@@ -1,4 +1,4 @@
-package chapter05;
+package chapter05.domain;
 
 /**
  * @author Siva

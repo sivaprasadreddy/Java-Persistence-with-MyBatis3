@@ -1,7 +1,7 @@
 /**
  * 
  */
-package chapter03.annotations;
+package chapter03;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;

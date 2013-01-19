@@ -1,15 +1,18 @@
 package chapter04;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import chapter04.Address;
-import chapter04.Student;
-import chapter04.StudentService;
+import chapter04.domain.PhoneNumber;
+import chapter04.domain.Student;
+import chapter04.domain.Tutor;
+
 
 
 public class StudentServiceIT 
@@ -27,49 +30,82 @@ public class StudentServiceIT
 		studentService = null;
 	}
 	
-	@Test
-    public void testCreateStudent() 
-	{
-		Address address = new Address();
-		address.setStreet("kukatpally");
-		address.setCity("Hyd");
-		address.setState("AP");
-		address.setZip("500012");
-		address.setCountry("India");
-		
-		Student student = new Student();
-		student.setAddress(address);
-		student.setEmail("test@gmail.com");
-		student.setName("neha1");
-
-		Student createdStudent = studentService.createStudent(student);
-		Assert.assertNotNull(createdStudent);
-		System.err.println(createdStudent.getId()+":"+createdStudent.getAddress().getId());
-	}
-	
 	//@Test
     public void testFindAllStudents() 
 	{
-		List<Student> blogs = studentService.findAllStudents();
-		Assert.assertNotNull(blogs);
-		for (Student blog : blogs)
+		List<Student> students = studentService.findAllStudents();
+		Assert.assertNotNull(students);
+		for (Student student : students)
 		{
-			System.out.println(blog);
+			System.err.println(student);
 		}
 		
-		for (int i = 0; i < 5; i++)
-		{
-			blogs = studentService.findAllStudents();
-		}
 	}
 	
 	//@Test
     public void testFindStudentById() 
 	{
-		for (int i = 0; i < 5; i++)
-		{
-			Student blog = studentService.findStudentById(1);
-			System.out.println(blog);
-		}
+		Student student = studentService.findStudentById(1);
+		System.err.println(student);
+		//System.err.println(student.getAddress().getId()+":"+student.getAddress().getCity());
+		
 	}
+	
+	//@Test
+    public void testFindStudentWithAddressById() 
+	{
+		Student student = studentService.findStudentWithAddressById(2);
+		System.err.println(student);
+		System.err.println(student.getAddress().getId()+":"+student.getAddress().getCity());
+	}
+	
+	//@Test
+	public void testCreateStudent() 
+	{
+		Student stud = new Student();
+		long ts = System.currentTimeMillis();
+		stud.setName("stud_"+ts);
+		stud.setEmail("stud_"+ts+"@gmail.com");
+		stud.setPhone(new PhoneNumber("123-456-7890"));
+		Student student = studentService.createStudent(stud);
+		System.err.println("CreatedStudent: "+student);
+		
+	}
+	
+	//@Test
+	public void testCreateStudentWithMap() 
+	{
+		Map<String, Object> studMap = new HashMap<String, Object>();
+		long ts = System.currentTimeMillis();
+		studMap.put("name","stud_"+ts);
+		studMap.put("email","stud_"+ts+"@gmail.com");
+		studMap.put("phone",null);
+		studentService.createStudentWithMap(studMap);
+		
+	}
+	//@Test
+	public void testUpdateStudent() 
+	{
+		Student stud = new Student();
+		long ts = System.currentTimeMillis();
+		stud.setId(2);
+		stud.setName("studddd_"+ts);
+		stud.setEmail("studddd_"+ts+"@gmail.com");
+		Student student = studentService.updateStudent(stud);
+		System.err.println("UpdatedStudent: "+student);
+		
+	}
+	
+	//@Test
+	public void testDeleteStudent() {
+		boolean deleteStudent = studentService.deleteStudent(12);
+		System.err.println("deleteStudent:"+deleteStudent);
+	}
+	
+	@Test
+	public void testFindTutorById() {
+		Tutor tutor = studentService.findTutorById(1);
+		System.err.println(tutor);
+	}
+	
 }

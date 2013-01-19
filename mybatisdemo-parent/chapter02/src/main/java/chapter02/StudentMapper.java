@@ -2,6 +2,8 @@ package chapter02;
 
 import java.util.List;
 
+import chapter02.domain.Student;
+
 /**
  * @author Siva
  *

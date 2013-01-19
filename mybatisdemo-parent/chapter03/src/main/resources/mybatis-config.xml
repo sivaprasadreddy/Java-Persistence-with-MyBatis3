@@ -12,7 +12,7 @@
 	  </typeAliases>
 	  
 		<typeHandlers>
-		  <typeHandler handler="chapter03.xml.PhoneTypeHandler"/>
+		  <typeHandler handler="chapter03.PhoneTypeHandler"/>
 		</typeHandlers>
 
 	  <environments default="development">
@@ -29,8 +29,7 @@
 	  </environments>
 	  
 	  <mappers>
-	    <mapper resource="chapter03/xml/StudentMapper.xml"/>
-	    <mapper class="chapter03.annotations.AnnotatedStudentMapper"/>
+	    <mapper resource="chapter03/StudentMapper.xml"/>
 	  </mappers>
   	
   	

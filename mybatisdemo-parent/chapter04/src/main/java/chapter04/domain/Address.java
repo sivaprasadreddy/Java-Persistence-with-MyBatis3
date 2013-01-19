@@ -1,4 +1,4 @@
-package chapter04;
+package chapter04.domain;
 
 /**
  * @author Siva
@@ -13,6 +13,12 @@ public class Address
 	private String zip;
 	private String country;
 	
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", street=" + street + ", city=" + city
+				+ ", state=" + state + ", zip=" + zip + ", country=" + country
+				+ "]";
+	}
 	public Address()
 	{
 	}

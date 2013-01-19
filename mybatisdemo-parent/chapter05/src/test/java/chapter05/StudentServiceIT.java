@@ -9,9 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import chapter05.Address;
-import chapter05.Student;
-import chapter05.StudentService;
+import chapter05.domain.Address;
+import chapter05.domain.Student;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="classpath:spring/applicationContext.xml")

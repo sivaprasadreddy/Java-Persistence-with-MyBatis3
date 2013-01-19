@@ -1,4 +1,4 @@
-package chapter03.xml;
+package chapter03;
 
 import java.util.List;
 import java.util.Map;

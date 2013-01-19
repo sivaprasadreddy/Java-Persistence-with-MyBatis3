@@ -1,19 +1,26 @@
-package chapter06;
+package chapter01.domain;
 
-import java.io.Serializable;
+import java.util.Date;
 
 
 /**
  * @author Siva
  *
  */
-public class Student implements Serializable
+public class Student
 {
-	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String name;
 	private String email;
+	private Date dob;
 	
+	
+	@Override
+	public String toString()
+	{
+		return "Student [id=" + id + ", name=" + name + ", email=" + email
+				+ ", dob=" + dob + "]";
+	}
 	public Student()
 	{
 	}
@@ -44,6 +51,14 @@ public class Student implements Serializable
 	public void setEmail(String email)
 	{
 		this.email = email;
+	}
+	public Date getDob()
+	{
+		return dob;
+	}
+	public void setDob(Date dob)
+	{
+		this.dob = dob;
 	}
 	
 	

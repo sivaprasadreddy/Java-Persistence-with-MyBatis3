@@ -8,6 +8,8 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import chapter02.domain.Student;
+
 
 public class StudentServiceTest 
 {

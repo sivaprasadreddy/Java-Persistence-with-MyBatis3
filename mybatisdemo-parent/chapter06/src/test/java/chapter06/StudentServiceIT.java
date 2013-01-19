@@ -8,8 +8,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import chapter06.Student;
-import chapter06.StudentService;
+import chapter06.domain.Student;
 
 
 public class StudentServiceIT 
@@ -30,17 +29,17 @@ public class StudentServiceIT
 	@Test
     public void testFindAllStudents() 
 	{
-		List<Student> blogs = null;//studentService.findAllStudents();
-		/*for (Student blog : blogs)
+		List<Student> students = null;//studentService.findAllStudents();
+		/*for (Student student : students)
 		{
-			System.out.println(blog);
+			System.out.println(student);
 		}*/
 		
 		for (int i = 0; i < 50; i++)
 		{
 			System.err.println("Iteration ["+i+"]"+new Date());
-			blogs = studentService.findAllStudents();
-			Assert.assertNotNull(blogs);
+			students = studentService.findAllStudents();
+			Assert.assertNotNull(students);
 
 			try {
 				Thread.sleep(1000*15);
@@ -55,8 +54,8 @@ public class StudentServiceIT
 	{
 		for (int i = 0; i < 5; i++)
 		{
-			Student blog = studentService.findStudentById(1);
-			System.out.println(blog);
+			Student student = studentService.findStudentById(1);
+			System.out.println(student);
 		}
 	}
 }

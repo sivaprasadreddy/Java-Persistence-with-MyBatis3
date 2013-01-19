@@ -7,7 +7,7 @@
 	  <properties resource="application.properties"/>
 		
 	  <typeAliases>
-	  	<package name="chapter04"/>
+	  	<package name="chapter04.domain"/>
 	  </typeAliases>
 	
 	  <environments default="development">
@@ -24,6 +24,7 @@
 	  
 	  <mappers>
 	    <mapper resource="chapter04/StudentMapper.xml"/>
+	    <mapper class="chapter04.StudentMapper"/>
 	  </mappers>
   	
   	

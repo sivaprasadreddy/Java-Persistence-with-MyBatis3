@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import chapter01.domain.Student;
+
 /**
  * @author Siva
  *

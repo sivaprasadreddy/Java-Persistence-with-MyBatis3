@@ -1,21 +1,28 @@
-package chapter05;
+package chapter04.domain;
 
+import java.util.List;
 
 /**
  * @author Siva
  *
  */
-public class Student
+public class Tutor
 {
 	private Integer id;
 	private String name;
 	private String email;
 	private Address address;
+	private List<Course> courses;
 	
-	public Student()
+	@Override
+	public String toString() {
+		return "Tutor [id=" + id + ", name=" + name + ", email=" + email
+				+ ", address=" + address + ", courses=" + courses + "]";
+	}
+	public Tutor()
 	{
 	}
-	public Student(Integer id)
+	public Tutor(Integer id)
 	{
 		this.id = id;
 	}
@@ -45,15 +52,17 @@ public class Student
 	}
 	public Address getAddress()
 	{
-		if(address == null){
-			address = new Address();
-		}
 		return address;
 	}
 	public void setAddress(Address address)
 	{
 		this.address = address;
 	}
-
+	public List<Course> getCourses() {
+		return courses;
+	}
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
 	
 }

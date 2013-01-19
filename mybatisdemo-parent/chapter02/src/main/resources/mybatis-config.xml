@@ -7,7 +7,7 @@
 	  <properties resource="application.properties"/>
 		
 	  <typeAliases>
-	  	<package name="chapter02"/>
+	  	<package name="chapter02.domain"/>
 	  </typeAliases>
 	
 	  <environments default="development">

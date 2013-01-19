@@ -1,6 +1,4 @@
-package chapter01;
-
-import java.util.Date;
+package chapter04.domain;
 
 
 /**
@@ -12,14 +10,13 @@ public class Student
 	private Integer id;
 	private String name;
 	private String email;
-	private Date dob;
-	
+	private PhoneNumber phone;
+	private Address address;
 	
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return "Student [id=" + id + ", name=" + name + ", email=" + email
-				+ ", dob=" + dob + "]";
+				+ ", phone=" + (phone==null?null:phone.getAsString()) + ", address=" + address + "]";
 	}
 	public Student()
 	{
@@ -52,14 +49,17 @@ public class Student
 	{
 		this.email = email;
 	}
-	public Date getDob()
-	{
-		return dob;
+	public Address getAddress() {
+		return address;
 	}
-	public void setDob(Date dob)
-	{
-		this.dob = dob;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
-	
+	public PhoneNumber getPhone() {
+		return phone;
+	}
+	public void setPhone(PhoneNumber phone) {
+		this.phone = phone;
+	}
 	
 }

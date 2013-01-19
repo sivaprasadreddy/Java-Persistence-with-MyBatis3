@@ -1,4 +1,4 @@
-package chapter03.annotations;
+package chapter03;
 
 import java.util.List;
 import java.util.Map;
@@ -11,7 +11,7 @@ import chapter03.domain.Student;
 import chapter03.domain.Tutor;
 
 
-public class AnnotatedStudentService 
+public class StudentService 
 {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -19,9 +19,9 @@ public class AnnotatedStudentService
 	{
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
-			AnnotatedStudentMapper AnnotatedStudentMapper = sqlSession.getMapper(AnnotatedStudentMapper.class);
-			logger.debug("AnnotatedStudentMapper-DEBUG :"+AnnotatedStudentMapper);
-			return AnnotatedStudentMapper.findAllStudents();
+			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+			logger.debug("StudentMapper-DEBUG :"+studentMapper);
+			return studentMapper.findAllStudents();
 		} finally {
 			sqlSession.close();
 		}
@@ -31,9 +31,9 @@ public class AnnotatedStudentService
 	{
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
-			AnnotatedStudentMapper blogMapper = sqlSession.getMapper(AnnotatedStudentMapper.class);
-			logger.debug("AnnotatedStudentMapper-DEBUG :"+blogMapper);
-			return blogMapper.findStudentById(id);
+			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+			logger.debug("StudentMapper-DEBUG :"+studentMapper);
+			return studentMapper.findStudentById(id);
 		} finally {
 			sqlSession.close();
 		}
@@ -42,8 +42,8 @@ public class AnnotatedStudentService
 	public Student findStudentWithAddressById(int id) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
-			AnnotatedStudentMapper blogMapper = sqlSession.getMapper(AnnotatedStudentMapper.class);
-			return blogMapper.selectStudentWithAddress(id);
+			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+			return studentMapper.selectStudentWithAddress(id);
 		} finally {
 			sqlSession.close();
 		}
@@ -52,7 +52,7 @@ public class AnnotatedStudentService
 	public Student createStudent(Student student) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
-			AnnotatedStudentMapper mapper = sqlSession.getMapper(AnnotatedStudentMapper.class);
+			StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
 			mapper.insertStudent(student);
 			sqlSession.commit();
 			return student;
@@ -70,7 +70,7 @@ public class AnnotatedStudentService
 	public void createStudentWithMap(Map<String, Object> studentDataMap) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
-			AnnotatedStudentMapper mapper = sqlSession.getMapper(AnnotatedStudentMapper.class);
+			StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
 			System.err.println("with map");
 			mapper.insertStudentWithMap(studentDataMap);
 			sqlSession.commit();
@@ -88,7 +88,7 @@ public class AnnotatedStudentService
 	public Student updateStudent(Student student) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
-			AnnotatedStudentMapper mapper = sqlSession.getMapper(AnnotatedStudentMapper.class);
+			StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
 			mapper.updateStudent(student);
 			sqlSession.commit();
 			return student;
@@ -106,7 +106,7 @@ public class AnnotatedStudentService
 	public boolean deleteStudent(int id) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
-			AnnotatedStudentMapper mapper = sqlSession.getMapper(AnnotatedStudentMapper.class);
+			StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
 			int count = mapper.deleteStudent(id);
 			sqlSession.commit();
 			return count > 0;
@@ -124,7 +124,7 @@ public class AnnotatedStudentService
 	public Tutor findTutorById(int tutorId) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
-			AnnotatedStudentMapper mapper = sqlSession.getMapper(AnnotatedStudentMapper.class);
+			StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
 			return mapper.selectTutorById(tutorId);
 		} 
 		

@@ -1,0 +1,1 @@
+This module demonstrate the MyBatis caching support.

@@ -14,26 +14,34 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class MyBatisUtil
 {
 	private static final String DEFAULT_MYBATIS_CONFIG_FILE="mybatis-config.xml";
-	private static final SqlSessionFactory sqlSessionFactory;
+	private static SqlSessionFactory xmlSqlSessionFactory;
 	
-	static
-	{
-		InputStream inputStream;
-		try
-		{
-			inputStream = Resources.getResourceAsStream(DEFAULT_MYBATIS_CONFIG_FILE);
-			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-		} catch (IOException e)
-		{
-			throw new RuntimeException(e.getCause());
-		}
-	}
+	private static final String environment = "development";
 	
 	public static SqlSessionFactory getSqlSessionFactory()
 	{
-		if(sqlSessionFactory==null){
-			throw new RuntimeException("Unable to build SqlSessionFactory.");
-		}
-		return sqlSessionFactory;
+		return getSqlSessionFactory(environment);
 	}
+	public static SqlSessionFactory getSqlSessionFactory(String environment)
+	{
+		return getXmlSqlSessionFactory(environment);
+	}
+	private static SqlSessionFactory getXmlSqlSessionFactory(String environment)
+	{
+		if(xmlSqlSessionFactory==null){
+			//org.apache.ibatis.logging.LogFactory.useLog4JLogging();
+			
+			try
+			{
+				InputStream inputStream = Resources.getResourceAsStream(DEFAULT_MYBATIS_CONFIG_FILE);
+				xmlSqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream, environment);
+			} catch (IOException e)
+			{
+				throw new RuntimeException(e.getCause());
+			}
+		}
+		return xmlSqlSessionFactory;
+	}
+	
+	
 }
