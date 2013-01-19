@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="chapter04.StudentMapper">
+	
+	<resultMap type="Student" id="StudentResult">
+		<id 	property="id" column="student_id"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<association property="address" javaType="Address">
+			<id property="id" column="addr_id"/>
+			<result property="street" column="street"/>
+			<result property="city" column="city"/>
+			<result property="state" column="state"/>
+			<result property="zip" column="zip"/>
+			<result property="country" column="country"/>
+		</association>
+	</resultMap>
+  
+  	<select id="findAllStudents" resultMap="StudentResult">
+    	select * from Students
+  	</select>
+  	
+  	<select id="findStudentById" parameterType="int" resultMap="StudentResult">
+    	select * from Students where stud_id=#{Id}
+  	</select>
+  	
+  	<insert id="insertAddress" parameterType="Address" keyProperty="id" useGeneratedKeys="true">
+  		insert into addresses (street, city, state, zip, country)
+  		values(#{street}, #{city}, #{state}, #{zip}, #{country})
+  	</insert>
+  
+  	<insert id="insertStudent" parameterType="Student" keyProperty="id" useGeneratedKeys="true">
+	  	insert into students(name, email, addr_id)
+	  	values( #{name}, #{email}, #{address.id})
+  	</insert>
+  	
+</mapper>
