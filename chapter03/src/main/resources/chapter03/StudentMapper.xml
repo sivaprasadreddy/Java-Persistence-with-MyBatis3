@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="chapter03.StudentMapper">
+	
+	<resultMap type="Student" id="StudentResult">
+		<id 	property="id" column="stud_id"/>
+		<result property="name" column="name" />
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<association property="address" column="addr_id" select="selectAddressById"></association>
+	</resultMap>
+  	
+  	<resultMap type="Address" id="AddressResult">
+  		<id property="id" column="addr_id"/>
+		<result property="street" column="street"/>
+		<result property="city" column="city"/>
+		<result property="state" column="state"/>
+		<result property="zip" column="zip"/>
+		<result property="country" column="country"/>
+  	</resultMap>
+  	
+  	<resultMap type="Student" id="StudentWithAddressResult1">
+		<id 	property="id" column="stud_id"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<association property="address" column="addr_id" select="selectAddressById"/>
+	</resultMap>
+	
+	<resultMap type="Student" id="StudentWithAddressResult2">
+		<id 	property="id" column="stud_id"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<association property="address" javaType="Address">
+			<id property="id" column="addr_id"/>
+			<result property="street" column="street"/>
+			<result property="city" column="city"/>
+			<result property="state" column="state"/>
+			<result property="zip" column="zip"/>
+			<result property="country" column="country"/>
+		</association>
+	</resultMap>
+	
+	<resultMap type="Student" id="StudentWithAddressResult">
+		<id 	property="id" column="stud_id"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="address.id" column="addr_id"/>
+		<result property="address.street" column="street"/>
+		<result property="address.city" column="city"/>
+		<result property="address.state" column="state"/>
+		<result property="address.zip" column="zip"/>
+		<result property="address.country" column="country"/>
+	</resultMap>
+	
+	
+  	<insert id="insertStudent" parameterType="Student" useGeneratedKeys="true" keyProperty="id">
+  		insert into students(name,email,addr_id, phone)
+  		values(#{name},#{email},#{address.id},#{phone})
+  	</insert>
+  	
+  	<insert id="insertStudentWithMap" parameterType="hashmap" useGeneratedKeys="true" keyProperty="id">
+  		insert into students(name,email,addr_id,phone)
+  		values(#{name},#{email},#{address.id},#{phone})
+  	</insert>
+  	
+  	<update id="updateStudent" parameterType="Student">
+  		update students 
+  		set 
+  		name=#{name}, 
+  		email=#{email}, 
+  		phone=#{phone}
+  		where stud_id=#{id}
+  		
+  		<set>
+      		<if test="name != null">name=#{name},</if>
+      		<if test="email != null">email=#{email},</if>
+      		<if test="phone != null">phone=#{phone},</if>
+      	</set>
+      	where stud_id=#{id}
+  	</update>
+  	
+  	<delete id="deleteStudent" parameterType="int">
+  		delete from students where stud_id=#{id}
+  	</delete>
+  	
+  	<select id="findAllStudents" resultMap="StudentResult">
+    	select * from Students
+  	</select>
+  	
+  	<select id="findStudentById" parameterType="int" resultMap="StudentWithAddressResult1">
+    	select * from Students where stud_id=#{Id}
+  	</select>
+  	
+  	<select id="selectAddressById" parameterType="int" resultMap="AddressResult">
+  		select * from addresses where addr_id=#{id}
+  	</select>
+  	
+  	
+  	<select id="selectStudentWithAddress" parameterType="int" resultMap="StudentWithAddressResult">
+  		select stud_id, name, email,phone, a.addr_id, street, city, state, zip, country
+  		FROM students s left outer join addresses a on s.addr_id=a.addr_id
+		where stud_id=#{studId}
+  	</select>
+  	
+  	<resultMap type="Tutor" id="TutorResult">
+  		<id 	column="tutor_id" property="id"/>
+  		<result column="tutor_name" property="name"/>
+  		<result column="email" property="email"/>
+  		<association property="address" resultMap="AddressResult"/>
+  		<collection property="courses"  resultMap="CourseResult"  />
+  		<collection property="courses"  column="tutor_id" select="selectCoursesByTutor"/>
+  		
+  	</resultMap>
+  	
+  	<resultMap type="Course" id="CourseResult">
+  		<id 	column="course_id" property="id"/>
+  		<result column="name" property="name"/>
+  		<result column="description" property="description"/>
+  		<result column="start_date" property="startDate"/>
+  		<result column="end_date" property="endDate"/>
+  	</resultMap>
+  	
+  	<select id="selectTutorById" parameterType="int" resultMap="TutorResult">
+  		SELECT t.tutor_id, t.name as tutor_name, email, a.addr_id, street, city, state, zip, country,
+       			course_id, c.name, description, start_date, end_date
+		FROM tutors t left outer join addresses a on t.addr_id=a.addr_id
+		  left outer join courses c on t.tutor_id=c.tutor_id
+		where t.tutor_id=#{tutorId}
+  	</select>
+  	
+  	<select id="selectCoursesByTutor" parameterType="int" resultMap="CourseResult">
+  		select * from courses where tutor_id=#{tutorId}
+  	</select>
+  	
+  	<select id="searchCourses" parameterType="hashmap" resultMap="CourseResult">
+  		SELECT * FROM COURSES
+  		WHERE TUTOR_ID= #{tutorId}
+  		<if test="courseName != null">
+  			AND name like #{courseName}
+  		</if>
+  		<if test="startDate != null">
+  			AND start_date  &gt;= #{startDate}
+  		</if>
+  		<if test="endDate != null">
+  			AND end_date  &lt;= #{endDate}
+  		</if>
+  		
+  	</select>
+  	
+  	<select id="searchCoursesByTutors" parameterType="hashmap" resultMap="CourseResult">
+  		SELECT * FROM COURSES
+  		<if test="tutorIds != null">
+  		<where>
+  		tutor_id IN
+  		<foreach item="tutorId" collection="tutorIds"
+	      open="(" separator="," close=")">
+	        #{tutorId}
+	  	</foreach>
+   		</where>  		
+   		</if>
+  	</select>
+</mapper>

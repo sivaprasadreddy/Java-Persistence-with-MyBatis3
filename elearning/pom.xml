@@ -1,17 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" 
+	xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-
+  
   <groupId>com.mybatisdemo</groupId>
-  <artifactId>mybatisdemo-parent</artifactId>
-  <version>0.0.1</version>
-  <packaging>pom</packaging>
-
-  <name>mybatisdemo-parent</name>
-  <url>http://sivalabs.blogspot.in</url>
-  <description>MyBatis Demo Source Code</description>
-
+    <version>0.0.1</version>
+  	<artifactId>elearning</artifactId>
+  <packaging>war</packaging>
+  <name>E-Learning Webapp</name>
+  <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.6</java.version>
@@ -43,22 +41,11 @@
         
   </properties>
 
-  <!-- <modules>
-    	<module>common</module>
-    	<module>chapter01</module>
-    	<module>chapter02</module>
-    	<module>chapter03</module>
-    	<module>chapter04</module>
-    	<module>chapter05</module>
-    	<module>chapter06</module>
-    	<module>elearning</module>
-  </modules> -->
-  
 	<dependencies>
 		
 		<dependency>
 			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
+			<artifactId>mybatis-spring</artifactId>
 		</dependency>
 	
 		<dependency>
