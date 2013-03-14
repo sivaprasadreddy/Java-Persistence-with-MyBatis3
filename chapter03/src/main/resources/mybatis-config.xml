@@ -4,32 +4,31 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<properties resource="application.properties">
-	</properties>
-	
-	  <typeAliases>
-	  	<package name="chapter03.domain"/>
-	  </typeAliases>
-	  
-		<typeHandlers>
-		  <typeHandler handler="chapter03.PhoneTypeHandler" />
-		</typeHandlers>
+	<properties resource="application.properties" />
 
-	 <environments default="development">
-	    <environment id="development">
-	      <transactionManager type="JDBC"/>
-	      <dataSource type="POOLED">
-	        <property name="driver" value="${jdbc.driverClassName}"/>
-	        <property name="url" value="${jdbc.url}"/>
-	        <property name="username" value="${jdbc.username}"/>
-	        <property name="password" value="${jdbc.password}"/>
-	      </dataSource>
-	    </environment>
-	    
-	  </environments>
-	  
-	  <mappers>
-	    <mapper resource="chapter03/StudentMapper.xml"/>
-	  </mappers>
-  	
+	<typeAliases>
+		<package name="com.mybatis3.domain" />
+	</typeAliases>
+
+	<typeHandlers>
+		<typeHandler handler="com.mybatis3.typehandlers.PhoneTypeHandler" />
+	</typeHandlers>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driverClassName}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+
+	</environments>
+
+	<mappers>
+		<package name="com.mybatis3.mappers"/>
+	</mappers>
+
 </configuration>

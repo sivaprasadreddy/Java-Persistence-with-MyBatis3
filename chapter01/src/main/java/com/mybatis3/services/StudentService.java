@@ -35,9 +35,20 @@ public class StudentService
 		logger.debug("Select Student By ID :{}", studId);
 		SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSession();
 		try {
+			//Student student = sqlSession.selectOne("com.mybatis3.StudentMapper.findStudentById", studId);
 			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
 			return studentMapper.findStudentById(studId);
-			//return sqlSession.selectOne("com.mybatis3.StudentMapper.findStudentById", studId);
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
+	public Student findStudentByEmail(String email)
+	{
+		SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSession();
+		try {
+			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+			return studentMapper.findStudentByEmail(email);
 		} finally {
 			sqlSession.close();
 		}
