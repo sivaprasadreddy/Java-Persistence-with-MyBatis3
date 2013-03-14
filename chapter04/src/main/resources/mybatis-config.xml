@@ -7,8 +7,11 @@
 	  <properties resource="application.properties"/>
 		
 	  <typeAliases>
-	  	<package name="chapter04.domain"/>
+	  	<package name="com.mybatis3.domain"/>
 	  </typeAliases>
+	  <typeHandlers>
+	  	<typeHandler handler="com.mybatis3.typehandlers.PhoneTypeHandler"/>
+	  </typeHandlers>
 	
 	  <environments default="development">
 	    <environment id="development">
@@ -23,9 +26,7 @@
 	  </environments>
 	  
 	  <mappers>
-	    <mapper resource="chapter04/StudentMapper.xml"/>
-	    <mapper class="chapter04.StudentMapper"/>
-	  </mappers>
-  	
+	  	<package name="com.mybatis3.mappers"/>
+	  </mappers>  	
   	
 </configuration>

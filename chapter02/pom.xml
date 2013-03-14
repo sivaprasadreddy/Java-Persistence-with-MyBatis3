@@ -10,7 +10,7 @@
 	<artifactId>chapter02</artifactId>
 	<name>chapter02</name>
 	<url>http://www.mybatis.org</url>
-	<description>MyBatis Book Chapter 01</description>
+	<description>MyBatis Book Chapter 02</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
