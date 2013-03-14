@@ -32,7 +32,7 @@ public class StudentServiceTest
 		studentService = null;
 	}
 	
-	//@Test
+	@Test
     public void testFindAllStudents() 
 	{
 		List<Student> students = studentService.findAllStudents();
@@ -48,14 +48,6 @@ public class StudentServiceTest
     public void testFindStudentById() 
 	{
 		Student student = studentService.findStudentById(1);
-		Assert.assertNotNull(student);
-		System.out.println(student);
-	}
-	
-	//@Test
-    public void testFindStudentByEmail() 
-	{
-		Student student = studentService.findStudentByEmail("student_1gmail.com");
 		Assert.assertNotNull(student);
 		System.out.println(student);
 	}
@@ -76,7 +68,7 @@ public class StudentServiceTest
 	}
 	
 	@Test
-	@Ignore
+	//@Ignore
 	public void testUpdateStudent() 
 	{
 		int id = 3;

@@ -16,8 +16,6 @@ public interface StudentMapper
 
 	Student findStudentById(Integer id);
 
-	Student findStudentByEmail(String email);
-
 	void insertStudent(Student student);
 
 	void updateStudent(Student student);

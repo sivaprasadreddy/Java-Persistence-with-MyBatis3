@@ -14,10 +14,13 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
  */
 public class MyBatisSqlSessionFactory
 {
-	private static SqlSessionFactory sqlSessionFactory = initSqlSessionFactory();
+	private static SqlSessionFactory sqlSessionFactory;
 	
-	private static SqlSessionFactory initSqlSessionFactory() {
-		InputStream inputStream;
+	public static SqlSessionFactory getSqlSessionFactory()
+	{
+		if(sqlSessionFactory==null) 
+		{
+			InputStream inputStream;
 			try
 			{
 				inputStream = Resources.getResourceAsStream("mybatis-config.xml");
@@ -26,14 +29,12 @@ public class MyBatisSqlSessionFactory
 			{
 				throw new RuntimeException(e.getCause());
 			}
+		}
 		return sqlSessionFactory;
 	}
 	
-	public static SqlSessionFactory getSqlSessionFactory() {
-		return sqlSessionFactory;
-	}
-	
-	public static SqlSession getSqlSession() {
+	public static SqlSession getSqlSession() 
+	{
 		return getSqlSessionFactory().openSession();
 	}
 }

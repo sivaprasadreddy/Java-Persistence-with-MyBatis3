@@ -17,11 +17,7 @@
   	</select>
   	
   	<select id="findStudentById" parameterType="int" resultType="Student">
-    	select stud_id as studId, name, email, dob from ${schemaname}.Students where stud_id=#{studId}
-  	</select>
-  	
-  	<select id="findStudentByEmail" parameterType="String" resultType="Student">
-    	select stud_id as studId, name, email, dob from Students where email=#{email}
+    	select stud_id as studId, name, email, dob from Students where stud_id=#{studId}
   	</select>
   	
   	<insert id="insertStudent" parameterType="Student">

@@ -7,7 +7,6 @@
 	  <properties resource="application.properties"/>
 		
 	  <typeAliases>
-	  	<typeAlias alias="Student" type="com.mybatis3.domain.Student"/>
 	  	<package name="com.mybatis3.domain"/>
 	  </typeAliases>
 	
