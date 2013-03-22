@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -19,6 +20,7 @@ public class CourseServiceTest
 	@BeforeClass
 	public static void setup()
 	{
+		TestDataPopulator.initDatabase();
 		courseService = new CourseService();
 	}
 	
@@ -36,8 +38,10 @@ public class CourseServiceTest
 		//map.put("courseName", "%java%");
 		map.put("startDate", new Date());
 		List<Course> courses = courseService.searchCourses(map);
+		Assert.assertNotNull(courses);
 		for (Course course : courses) {
-			System.out.println(course);
+			Assert.assertNotNull(course);
+			//System.out.println(course);
 		}
 	}
 	
@@ -52,8 +56,10 @@ public class CourseServiceTest
 		map.put("courseName", "%java%");
 		map.put("startDate", new Date());
 		List<Course> courses = courseService.searchCoursesByTutors(map);
+		Assert.assertNotNull(courses);
 		for (Course course : courses) {
-			System.out.println(course);
+			Assert.assertNotNull(course);
+			//System.out.println(course);
 		}
 	}
 }

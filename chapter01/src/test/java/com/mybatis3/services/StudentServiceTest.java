@@ -4,9 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.AfterClass;
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.mybatis3.domain.Student;
@@ -25,6 +24,7 @@ public class StudentServiceTest
 	public static void setup()
 	{
 		studentService = new StudentService();
+		TestDataPopulator.initDatabase();
 	}
 	@AfterClass
 	public static void teardown()
@@ -36,10 +36,11 @@ public class StudentServiceTest
     public void testFindAllStudents() 
 	{
 		List<Student> students = studentService.findAllStudents();
-		Assert.assertNotNull(students);
+		assertNotNull(students);
 		for (Student student : students)
 		{
-			System.out.println(student);
+			assertNotNull(student);
+			//System.out.println(student);
 		}
 		
 	}
@@ -48,12 +49,10 @@ public class StudentServiceTest
     public void testFindStudentById() 
 	{
 		Student student = studentService.findStudentById(1);
-		Assert.assertNotNull(student);
-		System.out.println(student);
+		assertNotNull(student);
 	}
 	
 	@Test
-	@Ignore
 	public void testCreateUStudent() 
 	{
 		Student student = new Student();
@@ -64,14 +63,15 @@ public class StudentServiceTest
 		student.setDob(new Date());
 		studentService.createStudent(student);
 		Student newStudent = studentService.findStudentById(id);
-		Assert.assertNotNull(newStudent);
+		assertNotNull(newStudent);
+		assertEquals("student_"+id, newStudent.getName());
+		assertEquals("student_"+id+"gmail.com", newStudent.getEmail());
 	}
 	
-	@Test
-	//@Ignore
+	@Test	
 	public void testUpdateStudent() 
 	{
-		int id = 3;
+		int id = 2;
 		Student student =studentService.findStudentById(id);
 		student.setStudId(id);
 		student.setName("student_"+id);
@@ -80,6 +80,9 @@ public class StudentServiceTest
 		student.setDob(now);
 		studentService.updateStudent(student);
 		Student updatedStudent = studentService.findStudentById(id);
-		Assert.assertNotNull(updatedStudent);
+		assertNotNull(updatedStudent);
+		assertEquals("student_"+id, updatedStudent.getName());
+		assertEquals("student_"+id+"gmail.com", updatedStudent.getEmail());
+		
 	}
 }

@@ -47,13 +47,14 @@ public class StudentService
 		}
 	}
 	
-	public void createStudent(Student student)
+	public Student createStudent(Student student)
 	{
 		SqlSession sqlSession = openSqlSession();
 		try {
 			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
 			studentMapper.insertStudent(student);
 			sqlSession.commit();
+			return student;
 		} finally {
 			sqlSession.close();
 		}

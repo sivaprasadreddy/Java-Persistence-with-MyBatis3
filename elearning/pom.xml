@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   
-  <groupId>com.mybatisdemo</groupId>
+  <groupId>com.mybatis3</groupId>
     <version>0.0.1</version>
   	<artifactId>elearning</artifactId>
   <packaging>war</packaging>

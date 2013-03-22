@@ -5,9 +5,9 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.mybatisdemo</groupId>
-	<version>0.0.1</version>
+	<groupId>com.mybatis3</groupId>
 	<artifactId>chapter03</artifactId>
+	<version>0.0.1</version>
 	<name>chapter03</name>
 	<url>http://www.mybatis.org</url>
 	<description>MyBatis Book Chapter 03</description>

@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.AfterClass;
-import org.junit.Assert;
+import static org.junit.Assert.*;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -22,6 +23,7 @@ public class StudentServiceTest
 	public static void setup()
 	{
 		studentService = new StudentService();
+		TestDataPopulator.initDatabase();
 	}
 	
 	@AfterClass
@@ -34,10 +36,11 @@ public class StudentServiceTest
     public void testFindAllStudents() 
 	{
 		List<Student> students = studentService.findAllStudents();
-		Assert.assertNotNull(students);
+		assertNotNull(students);
 		for (Student student : students)
 		{
-			System.out.println(student);
+			assertNotNull(student);
+			//System.out.println(student);
 		}
 		
 	}
@@ -46,17 +49,16 @@ public class StudentServiceTest
     public void testFindStudentById() 
 	{
 		Student student = studentService.findStudentById(1);
-		System.err.println(student);
-		System.err.println(student.getAddress());
-		
+		assertNotNull(student);
+		System.out.println(student);
 	}
 	
 	@Test
     public void testFindStudentWithAddressById() 
 	{
 		Student student = studentService.findStudentWithAddressById(1);
+		assertNotNull(student);
 		System.out.println(student);
-		System.err.println(student.getAddress());
 	}
 	
 	@Test
@@ -68,7 +70,10 @@ public class StudentServiceTest
 		stud.setEmail("stud_"+ts+"@gmail.com");
 		stud.setPhone(new PhoneNumber("123-456-7890"));
 		Student student = studentService.createStudent(stud);
-		System.err.println("Id:"+student.getStudId());
+		assertNotNull(student);
+		assertEquals("stud_"+ts, student.getName());
+		assertEquals("stud_"+ts+"@gmail.com", student.getEmail());
+		System.out.println("Created Student:"+student);
 		
 	}
 	
@@ -81,8 +86,9 @@ public class StudentServiceTest
 		studMap.put("email","stud_"+ts+"@gmail.com");
 		studMap.put("phone",null);
 		studentService.createStudentWithMap(studMap);
-		
+		//TODO Add assertions
 	}
+	
 	@Test
 	public void testUpdateStudent() 
 	{
@@ -91,15 +97,19 @@ public class StudentServiceTest
 		stud.setStudId(2);
 		stud.setName("stud_"+ts);
 		stud.setEmail("stud_"+ts+"@gmail.com");
-		Student student = studentService.updateStudent(stud);
-		System.err.println("Id:"+student.getStudId());
+		Student updatedStudent = studentService.updateStudent(stud);
+		assertNotNull(updatedStudent);
+		assertEquals("stud_"+ts, updatedStudent.getName());
+		assertEquals("stud_"+ts+"@gmail.com", updatedStudent.getEmail());
 		
 	}
 	
 	@Test
-	public void testDeleteStudent() {
-		boolean deleteStudent = studentService.deleteStudent(11);
-		System.err.println("deleteStudent:"+deleteStudent);
+	public void testDeleteStudent() 
+	{
+		boolean deleteStudent = studentService.deleteStudent(3);
+		assertTrue(deleteStudent);
+		System.out.println("deleteStudent:"+deleteStudent);
 	}
 	
 	

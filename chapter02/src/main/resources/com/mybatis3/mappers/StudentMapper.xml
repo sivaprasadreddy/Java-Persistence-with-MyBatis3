@@ -6,7 +6,7 @@
 <mapper namespace="com.mybatis3.mappers.StudentMapper">
 	
 	<resultMap type="Student" id="StudentResult">
-		<id 	property="id" column="student_id"/>
+		<id 	property="studId" column="stud_id"/>
 		<result property="name" column="name"/>
 		<result property="email" column="email"/>
 		<result property="dob" column="dob"/>
@@ -17,15 +17,15 @@
   	</select>
   	
   	<select id="findStudentById" parameterType="int" resultType="Student">
-    	select stud_id as id, name, email, dob from Students where stud_id=#{Id}
+    	select stud_id as studId, name, email, dob from Students where stud_id=#{studId}
   	</select>
   	
-  	<insert id="insertStudent" parameterType="Student" useGeneratedKeys="true" keyProperty="id">
+  	<insert id="insertStudent" parameterType="Student" useGeneratedKeys="true" keyProperty="studId">
   		INSERT INTO STUDENTS(NAME,EMAIL,DOB) VALUES(#{name},#{email},#{dob})
   	</insert>
   	
   	<update id="updateStudent" parameterType="Student">
-  		UPDATE STUDENTS SET NAME=#{name}, EMAIL=#{email}, DOB=#{dob} WHERE STUD_ID=#{id}
+  		UPDATE STUDENTS SET NAME=#{name}, EMAIL=#{email}, DOB=#{dob} WHERE STUD_ID=#{studId}
   	</update>
   	
 </mapper>

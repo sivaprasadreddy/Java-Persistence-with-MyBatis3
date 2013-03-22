@@ -3,6 +3,7 @@ package com.mybatis3.services;
 import java.util.List;
 
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -18,6 +19,7 @@ public class TutorServiceTest
 	@BeforeClass
 	public static void setup()
 	{
+		TestDataPopulator.initDatabase();
 		tutorService = new TutorService();
 	}
 	
@@ -31,10 +33,12 @@ public class TutorServiceTest
 	@Test
 	public void testFindTutorById() {
 		Tutor tutor = tutorService.findTutorById(1);
-		System.err.println(tutor);
+		Assert.assertNotNull(tutor);
 		List<Course> courses = tutor.getCourses();
+		Assert.assertNotNull(courses);
 		for (Course course : courses) 
 		{
+			Assert.assertNotNull(course);
 			System.out.println(course);
 		}
 	}
