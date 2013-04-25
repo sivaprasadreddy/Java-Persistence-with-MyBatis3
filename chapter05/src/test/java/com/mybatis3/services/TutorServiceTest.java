@@ -73,7 +73,7 @@ public class TutorServiceTest
 
 	@Test
 	public void testDeleteTutor() {
-		boolean deleted = tutorService.deleteTutor(3);
+		boolean deleted = tutorService.deleteTutor(4);
    		assertTrue(deleted);
 	}
 

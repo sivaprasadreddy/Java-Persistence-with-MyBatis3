@@ -10,17 +10,15 @@ INSERT INTO ADDRESSES (ADDR_ID,STREET,CITY,STATE,ZIP,COUNTRY) VALUES
 
 -- Sample data for table STUDENTS
 
-INSERT INTO STUDENTS (STUD_ID,NAME,EMAIL,PHONE,DOB,GENDER,BIO,PIC,ADDR_ID) VALUES 
- (1,'Timothy','timothy@gmail.com','123-123-1234','1988-04-25','MALE',NULL,NULL,3),
- (2,'Douglas','douglas@gmail.com','789-456-1234','1990-08-15','MALE',NULL,NULL,4);
+INSERT INTO STUDENTS (STUD_ID,NAME,EMAIL,PHONE,DOB,BIO,PIC,ADDR_ID) VALUES 
+ (1,'Timothy','timothy@gmail.com','123-123-1234','1988-04-25',NULL,NULL,3),
+ (2,'Douglas','douglas@gmail.com','789-456-1234','1990-08-15',NULL,NULL,4);
 
 -- Sample data for table TUTORS
 
-INSERT INTO TUTORS (TUTOR_ID,NAME,EMAIL,PHONE,DOB,GENDER,BIO,PIC,ADDR_ID) VALUES 
- (1,'John','john@gmail.com','111-222-3333','1980-05-20','MALE',NULL,NULL,1),
- (2,'Paul','paul@gmail.com','123-321-4444','1981-03-15','FEMALE',NULL,NULL,2),
- (3,'Paul','paul@gmail.com','123-321-4444','1981-03-15','FEMALE',NULL,NULL,2),
- (4,'Mike','mike@gmail.com','123-321-4444','1981-03-15','MALE',NULL,NULL,2);
+INSERT INTO TUTORS (TUTOR_ID,NAME,EMAIL,PHONE,DOB,BIO,PIC,ADDR_ID) VALUES 
+ (1,'John','john@gmail.com','111-222-3333','1980-05-20',NULL,NULL,1),
+ (2,'Paul','paul@gmail.com','123-321-4444','1981-03-15',NULL,NULL,2);
 
 -- Sample data for table courses
 
