@@ -86,7 +86,6 @@ public class StudentServiceTest
 		studMap.put("email","stud_"+ts+"@gmail.com");
 		studMap.put("phone",null);
 		studentService.createStudentWithMap(studMap);
-		//TODO Add assertions
 	}
 	
 	@Test

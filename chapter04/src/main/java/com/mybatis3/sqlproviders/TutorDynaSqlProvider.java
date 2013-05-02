@@ -26,6 +26,12 @@ public class TutorDynaSqlProvider
 	
 	public String findTutorByIdSql(final int tutorId) 
 	{
+		/*return new SQL() {{
+			SELECT("tutor_id as tutorId, name, email");
+			FROM("tutors");
+			WHERE("tutor_id = #{tutorId}");
+		}}.toString();*/
+
 		return new SQL() {{
 			SELECT("tutor_id as tutorId, name, email");
 		    FROM("tutors");
@@ -93,12 +99,15 @@ public class TutorDynaSqlProvider
 	public String selectTutorById() 
 	{	
 		return new SQL() {{
-			SELECT("t.tutor_id, t.name as tutor_name, email, a.addr_id, street, city, state, zip, country,course_id, c.name as course_name, description, start_date, end_date");
+			SELECT("t.tutor_id, t.name as tutor_name, email");
+			SELECT("a.addr_id, street, city, state, zip, country");
+			SELECT("course_id, c.name as course_name, description, start_date, end_date");
 			FROM("TUTORS t");
 			LEFT_OUTER_JOIN("addresses a on t.addr_id=a.addr_id");
 			LEFT_OUTER_JOIN("courses c on t.tutor_id=c.tutor_id");
-		    WHERE("t.TUTOR_ID = #{tutorId}");
+			WHERE("t.TUTOR_ID = #{id}");
 		}}.toString();
+
 		
 	}
 }

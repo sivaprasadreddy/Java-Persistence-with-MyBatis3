@@ -1,11 +1,15 @@
 package com.mybatis3.domain;
 
+import java.io.Serializable;
+
 /**
  * @author Siva
  *
  */
-public class Address
+public class Address implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private Integer addrId;
 	private String street;
 	private String city;

@@ -10,6 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -56,12 +57,13 @@ public class StudentServiceTest
 
 	@Test
 	public void testCreateStudent() {
-		Address address = new Address();
-		address.setStreet("Quaker Ridge Rd.");
+		//Address address = new Address();
+		Address address = new Address(1,"Quaker Ridge Rd.","Bethel","Brooklyn","06801","USA");
+		/*address.setStreet("Quaker Ridge Rd.");
 		address.setCity("Bethel");
 		address.setState("Brooklyn");
 		address.setZip("06801");
-		address.setCountry("USA");
+		address.setCountry("USA");*/
 		
 		Student stud = new Student();
 		long ts = System.currentTimeMillis();
@@ -76,7 +78,7 @@ public class StudentServiceTest
 		System.err.println("CreatedStudent: "+student);
 	}
 
-	@Test(expected=RuntimeException.class)
+	@Test(expected=DataAccessException.class)
 	public void testCreateStudentForException() {
 		Address address = new Address();
 		address.setStreet("Quaker Ridge Rd.");
@@ -87,8 +89,8 @@ public class StudentServiceTest
 		
 		Student stud = new Student();
 		long ts = System.currentTimeMillis();
-		stud.setName("");
-		stud.setEmail("stud_"+ts+"@gmail.com");
+		stud.setName("stud_"+ts);
+		stud.setEmail("timothy@gmail.com");
 		stud.setPhone(new PhoneNumber("123-456-7890"));
 		stud.setAddress(address);
 		studentService.createStudent(stud);

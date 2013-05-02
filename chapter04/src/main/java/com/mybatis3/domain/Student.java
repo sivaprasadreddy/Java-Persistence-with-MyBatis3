@@ -1,12 +1,15 @@
 package com.mybatis3.domain;
 
+import java.io.Serializable;
+
 
 /**
  * @author Siva
  *
  */
-public class Student
+public class Student implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 	private Integer studId;
 	private String name;
 	private String email;
@@ -21,17 +24,17 @@ public class Student
 	public Student()
 	{
 	}
-	public Student(Integer studId)
+	public Student(Integer id)
 	{
-		this.studId = studId;
+		this.studId = id;
 	}
 	public Integer getStudId()
 	{
 		return studId;
 	}
-	public void setStudId(Integer studId)
+	public void setStudId(Integer id)
 	{
-		this.studId = studId;
+		this.studId = id;
 	}
 	public String getName()
 	{

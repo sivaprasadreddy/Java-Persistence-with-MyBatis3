@@ -29,7 +29,7 @@
   		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
-	<!-- <mybatis:scan base-package="com.mybatis3.mappers" /> -->
+	<!-- <mybatis:scan base-package="com.mybatis3.mappers"/> -->
 	
 	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 	  <property name="basePackage" value="com.mybatis3.mappers" />

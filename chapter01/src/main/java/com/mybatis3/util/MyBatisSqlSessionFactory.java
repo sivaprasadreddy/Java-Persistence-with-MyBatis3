@@ -36,7 +36,7 @@ public class MyBatisSqlSessionFactory
 	{
 		if(sqlSessionFactory==null) 
 		{
-			InputStream inputStream;
+			InputStream inputStream = null;
 			try
 			{
 				inputStream = Resources.getResourceAsStream("mybatis-config.xml");
@@ -44,6 +44,13 @@ public class MyBatisSqlSessionFactory
 			}catch (IOException e)
 			{
 				throw new RuntimeException(e.getCause());
+			}finally {
+				if(inputStream != null){
+					try {
+						inputStream.close();
+					} catch (IOException e) {
+					}
+				}
 			}
 		}
 		return sqlSessionFactory;

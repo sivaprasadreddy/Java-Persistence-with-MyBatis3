@@ -1,13 +1,16 @@
 package com.mybatis3.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author Siva
  *
  */
-public class Tutor
+public class Tutor implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private Integer tutorId;
 	private String name;
 	private String email;
@@ -22,17 +25,17 @@ public class Tutor
 	public Tutor()
 	{
 	}
-	public Tutor(Integer tutorId)
+	public Tutor(Integer id)
 	{
-		this.tutorId = tutorId;
+		this.tutorId = id;
 	}
 	public Integer getTutorId()
 	{
 		return tutorId;
 	}
-	public void setTutorId(Integer tutorId)
+	public void setTutorId(Integer id)
 	{
-		this.tutorId = tutorId;
+		this.tutorId = id;
 	}
 	public String getName()
 	{

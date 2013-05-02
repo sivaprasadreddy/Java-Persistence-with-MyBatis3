@@ -28,6 +28,7 @@ public class StudentService
 	{
 		SqlSession sqlSession = openSqlSession();
 		try {
+			//sqlSession.selectList("com.mybatis3.mappers.StudentMapper.findAllStudents");
 			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
 			return studentMapper.findAllStudents();
 		} finally {

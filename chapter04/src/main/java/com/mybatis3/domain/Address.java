@@ -1,11 +1,15 @@
 package com.mybatis3.domain;
 
+import java.io.Serializable;
+
 /**
  * @author Siva
  *
  */
-public class Address
+public class Address implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private Integer addrId;
 	private String street;
 	private String city;
@@ -22,27 +26,25 @@ public class Address
 	public Address()
 	{
 	}
-	public Address(Integer id)
+	public Address(Integer addrId)
 	{
-		this.addrId = id;
+		this.addrId = addrId;
 	}
-	public Address(Integer id, String street, String city, String state,
+	public Address(Integer addrId, String street, String city, String state,
 			String zip, String country)
 	{
-		this.addrId = id;
+		this.addrId = addrId;
 		this.street = street;
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
 		this.country = country;
 	}
-	public Integer getAddrId()
-	{
+	public Integer getAddrId() {
 		return addrId;
 	}
-	public void setAddrId(Integer id)
-	{
-		this.addrId = id;
+	public void setAddrId(Integer addrId) {
+		this.addrId = addrId;
 	}
 	public String getStreet()
 	{

@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.mybatis3.domain.Student;
 import com.mybatis3.mappers.StudentMapper;
@@ -14,14 +12,12 @@ import com.mybatis3.util.MyBatisUtil;
 
 public class StudentService 
 {
-	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	public List<Student> findAllStudents()
 	{
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
 			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
-			logger.debug("StudentMapper-DEBUG :"+studentMapper);
 			return studentMapper.findAllStudents();
 		} finally {
 			sqlSession.close();
@@ -33,7 +29,6 @@ public class StudentService
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
 			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
-			logger.debug("StudentMapper-DEBUG :"+studentMapper);
 			return studentMapper.findStudentById(id);
 		} finally {
 			sqlSession.close();
@@ -72,7 +67,6 @@ public class StudentService
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
 			StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
-			System.err.println("with map");
 			mapper.insertStudentWithMap(studentDataMap);
 			sqlSession.commit();
 		} 

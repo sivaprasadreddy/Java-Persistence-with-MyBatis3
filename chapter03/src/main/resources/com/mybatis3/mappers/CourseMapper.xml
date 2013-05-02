@@ -5,6 +5,8 @@
   
 <mapper namespace="com.mybatis3.mappers.CourseMapper">
 	
+	<cache eviction="FIFO" flushInterval="60000" size="512" readOnly="false"/>
+	
   	<resultMap type="Course" id="CourseResult">
   		<id 	column="course_id" property="courseId"/>
   		<result column="name" property="name"/>
@@ -17,7 +19,7 @@
   		select * from courses where tutor_id=#{tutorId}
   	</select>
   	
-  	<select id="searchCourses" parameterType="hashmap" resultMap="CourseResult">
+  	<select id="searchCourses" parameterType="hashmap" resultMap="CourseResult" useCache="false">
   		SELECT * FROM COURSES
   		WHERE TUTOR_ID= #{tutorId}
   		<if test="courseName != null">

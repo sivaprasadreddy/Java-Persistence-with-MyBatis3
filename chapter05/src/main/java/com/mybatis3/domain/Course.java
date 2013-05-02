@@ -1,5 +1,6 @@
 package com.mybatis3.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,8 +9,10 @@ import java.util.List;
  * @author Siva
  *
  */
-public class Course
+public class Course implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private Integer courseId;
 	private String name;
 	private String description;
@@ -28,9 +31,9 @@ public class Course
 	{
 		return courseId;
 	}
-	public void setCourseId(Integer courseId)
+	public void setCourseId(Integer id)
 	{
-		this.courseId = courseId;
+		this.courseId = id;
 	}
 	public String getName()
 	{

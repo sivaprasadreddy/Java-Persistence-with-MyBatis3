@@ -3,13 +3,17 @@
  */
 package com.mybatis3.domain;
 
+import java.io.Serializable;
+
 
 /**
  * @author Siva
  *
  */
-public class PhoneNumber 
+public class PhoneNumber  implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private String countryCode;
 	private String stateCode;
 	private String number;
