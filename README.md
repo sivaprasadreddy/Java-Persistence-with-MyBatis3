@@ -1,4 +1,4 @@
-MyBatis Chapters Code
+Java-Persistence-with-MyBatis3 Book Sample Code
 ========================
 1. Getting started with MyBatis
 2. Bootstrapping MyBatis
